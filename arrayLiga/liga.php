@@ -68,13 +68,13 @@ foreach ($liga as $local => $partidos) {
         echo "<td  style='border:1px solid black;  padding:10px; text-align: center'>";
         foreach ($result as $tres => $numero) {
             if($tres =="Resultado"){
-                echo "<span style='background:green'>". $numero . "</span><br>";
+                echo "<span style='background:green; padding:3px'>". $numero . "</span><br>";
             }elseif($tres =="Roja"){
-                echo "<span style='background:red'>". $numero ."</span>  ";
+                echo "<span style='background:red; padding:2px'>". $numero ."</span>  ";
             }elseif($tres=="Amarilla"){
-                echo "<span style='background:yellow'>".  $numero ." </span>  ";
+                echo "<span style='background:yellow; padding:2px'>".  $numero ." </span>  ";
             }else{
-                echo "<span style='background:orange'>" . $numero ."</span> </td>";
+                echo "<span style='background:orange; padding:2px'>" . $numero ."</span> </td>";
             }
         }
        
