@@ -15,7 +15,7 @@ echo "<br>";
 print_r($_REQUEST);
 echo "<br>";
 print_r($_FILES);
-$ubicacion = "/var/www/html/";
+$ubicacion = "/var/www/html/Tema3/formulario/";
 $nombreTemporal= basename($_FILES['fichero']['name']);
 $ubicacion= $ubicacion.$nombreTemporal;
 if(move_uploaded_file($_FILES['fichero']['tmp_name'], $ubicacion)){
@@ -23,4 +23,6 @@ if(move_uploaded_file($_FILES['fichero']['tmp_name'], $ubicacion)){
 }else{
     echo "Se ha producido un error";
 }
+
+
 ?>
