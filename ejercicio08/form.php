@@ -200,7 +200,16 @@
     ?>>
     <label for="idCheck5">Check5</label>
     <?php
-        if(enviado() && !existe("check")){
+
+        if(enviado() && existe("check") ){
+            if(count($_REQUEST['check'])>3 || count($_REQUEST['check'])<1){
+            ?>
+    <span style="color:red;">Debes reñenar elegir dentre 1 y 3</span>
+    <?php
+        }}
+    
+
+            if(enviado() && !existe("check") ){
     ?>
     <span style="color:red;">Debes reñenar el campo</span>
     <?php
@@ -209,21 +218,63 @@
     </p>
     <p>
     <label for="telefono">Nº Telefono</label>
-    <input type="tel" name="telefono" id="idTelefono" placeholder="654987321">
+    <input type="tel" name="telefono" id="idTelefono" placeholder="654987321" value="<?php
+        if(enviado() && !vacio("telefono")) 
+            echo $_REQUEST['telefono'];
+    ?>">
+    <?php
+        if((vacio('telefono') || !is_numeric($_REQUEST['telefono']) )&& enviado()){
+            ?>
+            <span style="color:red">Debes reñenar el telefono</span>
+            <?php
+
+        }
+    ?>
     </p>
     <p>
     <label for="email">Email</label>
-    <input type="email" name="email" id="idEmail">
+    <input type="email" name="email" id="idEmail" value="<?php
+        if(enviado() && !vacio('email')) echo $_REQUEST['email'];
+    ?>">
+    <?php
+        if(enviado() && vacio('email')){
+            ?>
+        <span style="color:red">Debes reñenar el correo</span>
+        <?php
+        }
+    ?>
     </p>
     <p>
     <label for="pass">Contraseña</label>
-    <input type="password" name="pass" id="idPass">
+    <input type="password" name="pass" id="idPass" value="<?php
+        if(enviado() && !vacio('pass')) echo $_REQUEST['pass'];
+    ?>">
+    <?php
+        if(vacio('pass') && enviado()){
+        ?>
+            <span style="color:red">Debes reñenar la contraseña</span>
+        <?php
+        }
+    ?>
     </p>
     <p>
     <label for="documento">Subir documento</label>
     <input type="file" name="documento" id="idDocumento">
+    <?php
+    if(existeDoc('documento') && enviado()){
+        fichero('documento');
+    }
+    if(enviado() && !existeDoc('documento')){
+        ?>
+        <span style="color:red">Debes seleccionar un documento</span>
+    <?php
+    }
+    ?>
     </p>
     <input type="submit" value="Enviar" name="enviar">
+    <?php
+    if(validarForm($_REQUEST['alfabetico'], $_REQUEST['numerico'], $_REQUEST['fecha'], $_REQUEST['radio'], $_REQUEST['elige'], $_REQUEST['check'], $_REQUEST['telefono'], $_REQUEST['email'], $_REQUEST['pass'], $_REQUEST['documento']))
+    ?>
     </form>
 </body>
 </html>
