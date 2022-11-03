@@ -225,7 +225,7 @@
     <?php
         if((vacio('telefono') || !is_numeric($_REQUEST['telefono']) )&& enviado()){
             ?>
-            <span style="color:red">Debes reñenar el telefono</span>
+            <span style="color:red">Debes reñenar el telefono con un telefono correcto</span>
             <?php
 
         }
