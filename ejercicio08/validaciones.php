@@ -40,8 +40,30 @@ function validarForm($nombre, $apellido, $fecha, $elegir, $telefono, $email, $pa
         if(vacio($nombre) || vacio($apellido) || vacio($fecha) || existe('radio') || existe($elegir) || existe('check') || vacio($telefono)|| vacio($email)|| vacio($pass)|| existeDoc('fichero')){
             //print_r($_REQUEST);
             //pintar los campos opcionales que no esten vacios
-            //foreach
-            echo '<span><strong>El nombre es: </strong></span>'.$nombre. '<br><span><strong>El apellido es: </strong></span>'. $apellido . '<br><span><strong>La fecha selecionada es: </strong></span>'. $fecha . '<br><span><strong>El radio seleccionado es: </strong></span>' .$_REQUEST['radio'] . '<br><span><strong>La opción elegida es: </strong></span>'. $elegir . '<br><span><strong>El check elegido es: </strong></span>'. $_REQUEST['check']. '<br><span><strong>El teléfono es: </strong></span>'. $telefono. '<br><span><strong>El correo es';
+            echo '<span><strong>El nombre es: </strong></span>'.$nombre;
+            if(!vacio('alfaOpcional')){
+                echo "<br><span><strong>EL nombre opcional es: </strong></span>".$_REQUEST['alfaOpcional'];
+            }
+            echo '<br><span><strong>El apellido es: </strong></span>'. $apellido;
+            if(!vacio('numeOpcional')){
+                echo '<br><span><strong>EL apellido opcional es: </strong></span>' . $_REQUEST['numeOpcional'];
+            }
+            echo '<br><span><strong>La fecha selecionada es: </strong></span>'. $fecha;
+            if(!vacio('fechaOpcional')){
+                echo '<br><span><strong>La fecha opcional selecciona es: </strong></span>'. $_REQUEST['fechaOpcional'];
+            }
+            foreach ($_REQUEST['radio'] as $key => $value) {
+                echo '<br><span><strong>El radio seleccionado es: </strong></span>' .$value ;
+            }
+            echo '<br><span><strong>La opción elegida es: </strong></span>'. $elegir ;
+            foreach ($_REQUEST['check'] as $key => $value) {
+                echo  '<br><span><strong>El check elegido es: </strong></span>'. $value;
+            }
+            echo '<br><span><strong>El teléfono es: </strong></span>'. $telefono;
+            echo '<br><span><strong>El correo es: </strong></span>' . $email;
+            echo '<br><span><strong>La contraseña es: </strong></span>'. $pass;
+            echo '<br><span><strong>El fichero selecionado es: </strong></span>'. $_FILES[$fichero]['name'];
+      
             return true;
         }
     }
