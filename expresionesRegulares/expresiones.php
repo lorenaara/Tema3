@@ -56,7 +56,7 @@
     // \d: cualquier numero y \D:cualquier letra
 
     //una etiqueta de apertura o de cierre 
-    $patron= '/^<\/?\D+\d*>$/';
+    $patron= '/^<\/?[a-z]+[0-9]?>/';
     $cadena= '<html>';
     $cadena1= '<p>';
     $cadena2= '</h1>';
@@ -65,5 +65,29 @@
     echo "<br>Cadena: ".str_replace('<', '&lt', $cadena2). " patron: ". $patron. " Match ". preg_match($patron, $cadena2);
 
     //quiero que me devuelva donde ha hecho match
+    //preg_match_all($patron, $cadena, $array);
+    $patron= '/<\/?[a-z]+[0-9]?>/';
+    $cadena='<html>Dentro de una html</html> <a>Dentro de un enlace</a><h1>Dentro de un h1</h1>';
+    echo "<br>Cadena: ".$cadena. " patron: ". $patron. " Match ". preg_match($patron, $cadena);
+    echo "<br>Array de coincidencias";
     preg_match_all($patron, $cadena, $array);
+    foreach($array[0] as $value){
+        echo str_replace('<', '&lt', $value). "<br>"; 
+    }
+    //que nos devuelva lo que hay dentro de las etiquetas
+    $patron= '/<[a-z]+[0-9]?>(.*)<\/?[a-z]+[0-9]?>/';
+    $cadena='<html>Dentro de una html</html> <a>Dentro de un enlace</a><h1>Dentro de un h1</h1>';
+    preg_match_all($patron, $cadena, $array);
+    echo "dentro de la etiqueta<br>";
+
+    //Expresiones regulares en arrays
+    $lista = array('Maria','Criado','25','Zamora', 'Calle Requejo 25', '492');
+    $patron= '/^\d{1,3}$/';
+    $numeros = preg_grep($patron,$lista); //devuelve la posicion y el valor que se busca
+    print_r($numeros);
+    echo "<br>";
+
+    $sustituir= 'numero';
+    $cambiado= preg_replace($patron, $sustituir, $lista);  //cambia el valor que se busca en el patron 
+    print_r($cambiado);
 ?>
