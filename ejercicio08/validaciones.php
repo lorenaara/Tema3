@@ -34,10 +34,15 @@ function fichero($fichero){
     }
 }
 
-function validarForm($nombre, $apellido, $fecha, $radio, $elegir, $check, $telefono, $email, $pass, $fichero){
+function validarForm($nombre, $apellido, $fecha, $elegir, $telefono, $email, $pass){
     if(enviado()){
-        if(vacio($nombre) || vacio($apellido) || vacio($fecha) || existe($radio) || existe($elegir) || existe($check) || vacio($telefono)|| vacio($email)|| vacio($pass)|| existeDoc($fichero)){
-            print_r($_REQUEST);
+
+        if(vacio($nombre) || vacio($apellido) || vacio($fecha) || existe('radio') || existe($elegir) || existe('check') || vacio($telefono)|| vacio($email)|| vacio($pass)|| existeDoc('fichero')){
+            //print_r($_REQUEST);
+            //pintar los campos opcionales que no esten vacios
+            //foreach
+            echo '<span><strong>El nombre es: </strong></span>'.$nombre. '<br><span><strong>El apellido es: </strong></span>'. $apellido . '<br><span><strong>La fecha selecionada es: </strong></span>'. $fecha . '<br><span><strong>El radio seleccionado es: </strong></span>' .$_REQUEST['radio'] . '<br><span><strong>La opción elegida es: </strong></span>'. $elegir . '<br><span><strong>El check elegido es: </strong></span>'. $_REQUEST['check']. '<br><span><strong>El teléfono es: </strong></span>'. $telefono. '<br><span><strong>El correo es';
+            return true;
         }
     }
 }
