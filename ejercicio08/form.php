@@ -294,6 +294,8 @@ require("./validaciones.php");
             </p>
             <input type="submit" value="Enviar" name="enviar">
             </form>
+            <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina form</a>
+            <a href="codigo.php?fichero=<? self()?>">Codigo de la pagina validaciones</a>
         </body>
     </html>
 <?php

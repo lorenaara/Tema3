@@ -5,6 +5,9 @@ function vacio($nombre){
     }
     return false;
 }
+function self(){
+    echo basename(__FILE__);
+}
 function enviado(){
     if(isset($_REQUEST['enviar'])){
         return true;
@@ -37,7 +40,7 @@ function fichero($fichero){
 function validarForm($nombre, $apellido, $fecha, $elegir, $telefono, $email, $pass){
     if(enviado()){
 
-        if(vacio($nombre) || vacio($apellido) || vacio($fecha) || existe('radio') || existe($elegir) || existe('check') || vacio($telefono)|| vacio($email)|| vacio($pass)|| existeDoc('fichero')){
+        if(vacio($nombre) || vacio($apellido) || vacio($fecha) || existe('radio') || existe($elegir) || existe('check') || vacio($telefono)|| vacio($email)|| vacio($pass)|| existeDoc('documento')){
             //print_r($_REQUEST);
             //pintar los campos opcionales que no esten vacios
             echo '<span><strong>El nombre es: </strong></span>'.$nombre;
@@ -52,9 +55,7 @@ function validarForm($nombre, $apellido, $fecha, $elegir, $telefono, $email, $pa
             if(!vacio('fechaOpcional')){
                 echo '<br><span><strong>La fecha opcional selecciona es: </strong></span>'. $_REQUEST['fechaOpcional'];
             }
-            foreach ($_REQUEST['radio'] as $key => $value) {
-                echo '<br><span><strong>El radio seleccionado es: </strong></span>' .$value ;
-            }
+            echo '<br><span><strong>El radio seleccionado es: </strong></span>' .$_REQUEST['radio'] ;
             echo '<br><span><strong>La opción elegida es: </strong></span>'. $elegir ;
             foreach ($_REQUEST['check'] as $key => $value) {
                 echo  '<br><span><strong>El check elegido es: </strong></span>'. $value;
@@ -62,7 +63,7 @@ function validarForm($nombre, $apellido, $fecha, $elegir, $telefono, $email, $pa
             echo '<br><span><strong>El teléfono es: </strong></span>'. $telefono;
             echo '<br><span><strong>El correo es: </strong></span>' . $email;
             echo '<br><span><strong>La contraseña es: </strong></span>'. $pass;
-            echo '<br><span><strong>El fichero selecionado es: </strong></span>'. $_FILES[$fichero]['name'];
+            echo '<br><span><strong>El fichero selecionado es: </strong></span>'. $_FILES['documento']['name'];
       
             return true;
         }
