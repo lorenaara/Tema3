@@ -40,8 +40,23 @@
         <p>
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" id="idApellido" placeholder="Apellidos" value="<?php
-            
+                if(enviado() && !vacio('apellido') && apellido('apellido')){
+                    echo $_REQUEST['apellido'];
+                }
             ?>">
+            <?
+                if(vacio('apellido') && enviado()){
+            ?>
+            <span style="color:red">El apellido no puede estar vacio</span>
+            <?
+                }
+                if(enviado() && !vacio('apellido') && !apellido('apellido')){
+            ?>
+            <span style="color:red">El apellido debe de ser valido( un minimo de 3 carecteres espacio 3 caracteres)</span>
+            <?
+                }
+            ?>
+
         </p>
         <p>
             <label for="fecha">Fecha Nacimiento:</label>

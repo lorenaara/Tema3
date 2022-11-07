@@ -20,7 +20,7 @@ function nombre($nombre){
 }
 function apellido($apellido){
     $patron= '/\D{3,}\s\D{3,}/';
-    if(preg_match($patron, $apellido)==1){
+    if(preg_match($patron, $_REQUEST[$apellido])==1){
         return true;
     }
     return false;
