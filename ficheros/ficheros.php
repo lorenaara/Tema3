@@ -62,6 +62,7 @@
                 //fseek pone el punto donde le indiques
                 //rewind siempre pone el puntero en 0
                 //cambio
+                //cambio en casa
                 fseek($fp, 0);
                 fwrite($fp,$remplaza, strlen($remplaza));
                 fclose($fp); 
