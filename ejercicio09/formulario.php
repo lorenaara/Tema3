@@ -52,7 +52,7 @@
                 }
                 if(enviado() && !vacio('apellido') && !apellido('apellido')){
             ?>
-            <span style="color:red">El apellido debe de ser valido( un minimo de 3 carecteres espacio 3 caracteres)</span>
+            <span style="color:red">El apellido debe de ser valido (un minimo de 3 carecteres espacio 3 caracteres)</span>
             <?
                 }
             ?>
