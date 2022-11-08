@@ -60,7 +60,23 @@
         </p>
         <p>
             <label for="fecha">Fecha Nacimiento:</label>
-            <input type="text" name="fecha" id="idFecha" placeholder="Fecha">
+            <input type="text" name="fecha" id="idFecha" placeholder="Fecha" value="<?php
+            if(enviado() && !vacio('fecha') && !fecha('fecha')){
+                echo $_REQUEST['fecha'];
+            }
+            ?>">
+            <?
+            if(vacio('fecha') && enviado()){
+            ?>
+            <span style="color:red">La fecha no puede estar vacia</span>
+            <?
+            }
+            if(enviado() && !vacio('fecha') && !fecha('fecha')){
+            ?>
+            <span style="color:red">La fecha tiene que tener un formato valido (09/05/2004)</span>
+            <?
+            }
+            ?>
         </p>
         <p>
             <label for="dni">DNI</label>
