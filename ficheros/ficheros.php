@@ -61,8 +61,7 @@
                 $remplaza= str_replace('/22', '/2022', $leido);
                 //fseek pone el punto donde le indiques
                 //rewind siempre pone el puntero en 0
-                //cambio
-                //cambio en casa
+                //cambio en clase
                 fseek($fp, 0);
                 fwrite($fp,$remplaza, strlen($remplaza));
                 fclose($fp); 
