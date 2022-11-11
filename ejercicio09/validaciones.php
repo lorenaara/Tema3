@@ -1,4 +1,7 @@
 <?php
+function self(){
+    echo basename(__FILE__);
+}
 function vacio($nombre){
     if(empty($_REQUEST[$nombre])){
         return true;
@@ -67,5 +70,42 @@ function correo($correo){
         return true;
     }
     return false;
+}
+function imagen($imagen){
+    $patron='/(.)+\.(jpg|png|bmp)/';
+    $nombreTemporal= basename($_FILES[$imagen]['name']);
+    if(preg_match($patron, $nombreTemporal)==1){    
+        return true;
+    }
+    return false;
+}
+function subirImagen($imagen){
+    $ubicacion='./';
+    $nombreTemporal= basename($_FILES[$imagen]['name']);
+    $ubicacion = $ubicacion .$nombreTemporal;
+    if(move_uploaded_file($_FILES[$imagen]['tmp_name'], $ubicacion)){
+        echo "<span style='color:green'>el fichero se ha subido</span>";
+    }else{
+        echo "<span style='color:red'>Se ha producido un error</span>";
+    }
+}
+function existeDoc($nombre){
+    if(!empty($_FILES[$nombre]['name'])){
+        return true;
+    }
+    return false;
+}
+function validarForm($nombre, $apellido, $fecha, $dni, $correo){
+    if(enviado()){
+        if(!vacio($nombre) && !vacio($apellido) && !vacio($fecha) && !vacio($correo) && !existeDoc('imagen') && nombre($nombre) && apellido($apellido) && fecha($fecha) && correo($correo) && imagen('imagen')){
+            echo '<span><strong>El nombre es: </strong></span>'.$nombre;
+            echo '<br><span><strong>El apellido es: </strong></span>'. $apellido;
+            echo '<br><span><strong>La fecha de nacimiento es: </strong></span>'. $fecha;
+            echo '<br><span><strong>El dni es: </strong></span>' . $dni;
+            echo '<br><span><strong>El correo es: </strong></span>' . $correo;
+            echo '<br><span><strong>El fichero selecionado es: </strong></span>'. $_FILES['imagen']['name'];
+            
+        }
+    }
 }
 ?>

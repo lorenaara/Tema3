@@ -1,5 +1,12 @@
 <?php
 require('./validaciones.php');
+$correcto = false;
+if(enviado()){
+    if(validarForm($_REQUEST['nombre'], $_REQUEST['apellido'], $_REQUEST['fecha'], $_REQUEST['dni'], $_REQUEST['correo'])){
+        $correcto = true;
+    }
+}
+if(!enviado() || !$correcto){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,6 +20,11 @@ require('./validaciones.php');
 
 <body>
     <h2>Formulario de registro</h2>
+    <?
+       // if($correcto){
+
+        //}
+    ?>
     <form action="./formulario.php" method="post" enctype="multipart/form-data">
         <p>
             <label for="nombre">Nombre</label>
@@ -35,7 +47,7 @@ require('./validaciones.php');
             <span style="color:red">EL nombre debe de ser valido(minimo 3 letras)</span>
             <?php
             }
-                ?>
+            ?>
         </p>
         <p>
             <label for="apellido">Apellido:</label>
@@ -130,8 +142,40 @@ require('./validaciones.php');
                     }
             ?>
         </p>
-        <input type="submit" value="Enviar" name="enviar">
+        <p>
+            <label for="imagen">Imagen (.jpg, .png, .bmp): </label>
+            <input type="file" name="imagen" id="imagen">
+            <?
+            // si se ha enviado fichero y sino error
+            if(existeDoc('imagen')&& enviado()){
+            // si tiene bien el patron y sino error
+                if(imagen('imagen')){
+                    //subir
+                    subirImagen('imagen');
+                }else{
+                    ?>
+                <span style="color:red">El formato de la imagen debe de ser valido </span>
+                <?
+                }
+                   
+                
+            }
+            if(!existeDoc('imagen')&& enviado()) { 
+            ?>
+            <span style="color:red">Debes selecionar una imagen no puede estar vacio</span>
+            <?
+                }
+            
+
+            ?>
+        </p>
+        <input type="submit" value="Enviar" name="enviar"><br>
+        <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina form</a><br>
+        <a href="codigo.php?fichero=<? self()?>">Codigo de la pagina validaciones</a>
     </form>
 </body>
 
+<?
+}
+?>
 </html>
