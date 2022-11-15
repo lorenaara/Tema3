@@ -1,11 +1,28 @@
 <?
-
-
 if(isset($_REQUEST['guardar'])){
     $escribir="";
     if($fp=fopen('notas.csv', 'r')){
        //lee por linea si la linea contiene nombre 
+       while($lea = fgets($fp, filesize('notas.csv'))){
+        // echo "<br>";
+        // echo $lea;
+        $pos= strpos($lea, $_REQUEST['name']);
+        if($pos==false){
+            $escribir = $lea;
+        }else{
+            $escribir = $_REQUEST['name'] + $_REQUEST['notas'];
+            if($fp=fopen('notas.csv', 'a')){
+                fwrite($fp, $escribir, strlen($escribir));
+                fclose($fp);
+                header('Location:./tabla.php');
+                exit;
+            }
+        }
+       }
+       
+
        //si la linea no contiene nombre esribir+=
+
        //si coincide la cambio 
         $leido = fread($fp, filesize('notas.csv')); 
         fclose($fp);
@@ -29,11 +46,6 @@ if ($fp = fopen('notas.csv', 'r')) {
     while($leido = fgetcsv($fp, filesize('notas.csv'), ';')){
         
         echo '<tr>';
-        /*foreach ($leido as $key => $value) {
-                echo '<td style="border: #000 1px solid;">';
-                    echo $value;
-                       echo '</td>';
-             }*/
              echo ' <form action="./editar.php" method="post" enctype="multipart/form-data">';
              if($leido[0]==$_REQUEST['name']){
              for($i=0; $i< count($leido); $i++){
@@ -55,6 +67,6 @@ if ($fp = fopen('notas.csv', 'r')) {
     }
         echo '</form></table>';
     }
-
+///djashdkjahsfl
 
 ?>

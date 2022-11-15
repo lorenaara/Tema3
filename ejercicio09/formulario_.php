@@ -6,6 +6,7 @@ if(enviado()){
         $correcto = true;
     }
 }
+if(!enviado() || !$correcto){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,9 +20,13 @@ if(enviado()){
 
 <body>
     <h2>Formulario de registro</h2>
-    
+    <?
+       // if($correcto){
+
+        //}
+    ?>
     <form action="./formulario.php" method="post" enctype="multipart/form-data">
-    <p>
+        <p>
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="idNombre" placeholder="Nombre" value="<?php
             if (enviado() && !vacio('nombre') && nombre('nombre')) {
@@ -164,14 +169,13 @@ if(enviado()){
 
             ?>
         </p>
-        <p>
-          
         <input type="submit" value="Enviar" name="enviar"><br>
         <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina form</a><br>
         <a href="codigo.php?fichero=<? self()?>">Codigo de la pagina validaciones</a>
     </form>
-    
 </body>
 
-
+<?
+}
+?>
 </html>

@@ -10,28 +10,16 @@ if ($fp = fopen('notas.csv', 'r')) {
     while( $leido = fgetcsv($fp, filesize('notas.csv'), ';')){
        
         echo '<tr>';
-        /*foreach ($leido as $key => $value) {
-                echo '<td style="border: #000 1px solid;">';
-                    echo $value;
-                       echo '</td>';
-             }*/
-
              for($i=0; $i< count($leido); $i++){
                 echo '<td style="border: #000 1px solid; text-align:center;">';
                 echo $leido[$i] ;
                 echo '</td>';
             }
             echo '<td style="border: #000 1px solid; padding:10px;"><a href="editar.php?name='.$leido[0].'">Editar</a></td>';
-             echo '</tr>';
-
-             
+             echo '</tr>';      
         }
         echo '</table>';
         fclose($fp);
    
 }
-
-
-
 ?>
-<a href=""></a>

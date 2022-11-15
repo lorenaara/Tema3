@@ -95,7 +95,7 @@ function existeDoc($nombre){
     }
     return false;
 }
-function validarForm($nombre, $apellido, $fecha, $dni, $correo){
+/*function validarForm($nombre, $apellido, $fecha, $dni, $correo){
     if(enviado()){
         if(vacio($nombre) && vacio($apellido) && vacio($fecha) && vacio($correo) && existeDoc('imagen') && nombre($nombre) && apellido($apellido) && fecha($fecha) && correo($correo) && imagen('imagen')){
             echo '<span><strong>El nombre es: </strong></span>'.$nombre;
@@ -107,5 +107,5 @@ function validarForm($nombre, $apellido, $fecha, $dni, $correo){
             
         }
     }
-}
+}*/
 ?>
