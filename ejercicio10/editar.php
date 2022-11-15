@@ -15,6 +15,7 @@ if($fp=fopen($_REQUEST['nombre'], 'w')){
         fclose($fp);
     ?></textarea>
   <input type="submit" name="volver" value="Volver">
+   <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina </a>     
   <?   
 }
 
