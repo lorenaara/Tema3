@@ -37,6 +37,7 @@
     <input type="submit" value="Editar" name="editar">
     <input type="submit" value="Leer" name="leer">
     </form>
+    <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina </a>
 </body>
 </html>
 
