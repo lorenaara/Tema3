@@ -8,9 +8,16 @@ if(isset($_REQUEST['guardar'])){
     if($fp=fopen($_REQUEST['nombre'], 'a')){
         fwrite($fp, $_REQUEST['fichero'], strlen($_REQUEST['fichero']));
         fclose($fp);
+<<<<<<< HEAD
         header('Location:./leer.php?nombre='. $_REQUEST['nombre']);
         exit;
     }
+=======
+    ?></textarea>
+  <input type="submit" name="volver" value="Volver">
+  <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina </a>
+  <?   
+>>>>>>> 488b6aa (codigo)
 }
 
 $existe=false;

@@ -27,7 +27,11 @@ if(isset($_REQUEST['editar'])){
         <input type="submit" name="volver" value="Volver">
         <input type="submit" name="editar" value="Editar">
      </form>
+<<<<<<< HEAD
 <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina </a>
+=======
+     <a href="codigo.php?fichero=<? echo basename(__FILE__)?>">Codigo de la pagina </a>
+>>>>>>> 488b6aa (codigo)
 <?
 
 ?>
