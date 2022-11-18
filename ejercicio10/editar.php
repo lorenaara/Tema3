@@ -12,6 +12,7 @@ if(isset($_REQUEST['guardar'])){
         exit;
     }
 }
+
 $existe=false;
 if(file_exists($_REQUEST['nombre'])){
     $existe=true;
