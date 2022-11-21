@@ -4,39 +4,23 @@ if(isset($_REQUEST['guardar'])){
     if($fp=fopen('notas.csv', 'r')){
        //lee por linea si la linea contiene nombre 
        while($lea = fgets($fp, filesize('notas.csv'))){
-        // echo "<br>";
-        // echo $lea;
         $pos= str_contains($lea, $_REQUEST['name']); //encuentra la posicion de la primera cadena en un string
         if(!$pos){
             $escribir .= $lea;
         }else{
-            $escribir .= $_REQUEST['name'] .";". $_REQUEST['notas1']; //hasta 3 y salto de linea
+            $escribir .= $_REQUEST['name'] .";". $_REQUEST['notas1'] . ";" . $_REQUEST['notas2'] . ";" . $_REQUEST['notas3'] . "\n"; 
             
         }
        }
-       
-
-       //si la linea no contiene nombre esribir+=
-
-       //si coincide la cambio 
-       // $leido = fread($fp, filesize('notas.csv')); 
-        fclose($fp);
-        
+        fclose($fp);  
     }
-
-    if($fp=fopen('notas.csv', 'a')){
+    //habia utilizado 'a', pero al escribir al final del fichero me escribia sin borrar lo que estaba escrito, por lo me duplicaba el archivo.
+    if($fp=fopen('notas.csv', 'w')){
         fwrite($fp, $escribir, strlen($escribir));
         fclose($fp);
         header('Location:./tabla.php');
         exit;
     }
-
-
-//abrir fichero en modo escritura 'a'
-//escribir el string 
-   // header('Location:./tabla.php');
-        //exit;
-
 }
 if ($fp = fopen('notas.csv', 'r')) {
     echo '<table style="border: #000 1px solid; border-collapse: collapse; ">';
@@ -58,7 +42,6 @@ if ($fp = fopen('notas.csv', 'r')) {
                     }else{
                         echo '<td style="border: #000 1px solid; text-align:center;">';
                     echo '<input type="text" name="notas'.$i.'" value='. $leido[$i]. '>';
-                    //echo $leido[$i] ;
                     echo '</td>';
                 }
             }
@@ -69,6 +52,5 @@ if ($fp = fopen('notas.csv', 'r')) {
     }
         echo '</form></table>';
     }
-///djashdkjahsfl
 
 ?>
