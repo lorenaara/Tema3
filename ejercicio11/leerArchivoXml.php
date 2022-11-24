@@ -20,13 +20,17 @@ echo '<tr>';
 foreach($raiz->childNodes as $alumnos){
     if($alumnos->nodeType==1){
         foreach($alumnos->childNodes as $notas){
+
             if($notas->nodeType ==1){
+                if($notas->nodeName=='nombre'){
+                    $nombre=$notas->nodeValue;
+                }
                 echo '<td style="border: #000 1px solid; text-align:center;">  '. $notas->nodeValue . '</td>';
             }
         }
       
         
-        echo '<td style="border: #000 1px solid; padding:10px;"><a href="editar.php?name='.$notas->nodeValue.'">Editar</a></td>';
+        echo '<td style="border: #000 1px solid; padding:10px;"><a href="editar.php?name='.$nombre.'">Editar</a></td>';
         echo '</tr>';  
         
     }
