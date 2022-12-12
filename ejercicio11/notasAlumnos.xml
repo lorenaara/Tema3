@@ -16,7 +16,11 @@
     <nombre>ismael</nombre>
     <nota1>5</nota1>
     <nota2>7</nota2>
+<<<<<<< HEAD
     <nota3>3</nota3>
+=======
+    <nota3>10</nota3>
+>>>>>>> 0e75ea1 (12)
   </alumno>
   <alumno>
     <nombre>uriel</nombre>

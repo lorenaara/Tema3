@@ -30,7 +30,7 @@ foreach($raiz->childNodes as $alumnos){
         }
       
         
-        echo '<td style="border: #000 1px solid; padding:10px;"><a href="editar.php?name='.$nombre.'">Editar</a></td>';
+        echo '<td style="border: #000 1px solid; padding:10px;"><a href="editar.php?name='.$notas->nodeValue.'">Editar</a></td>';
         echo '</tr>';  
         
     }
