@@ -2,7 +2,7 @@ create database hospital;
 use hospital;
 
 CREATE TABLE paciente (
-    id int primary key,
+    id int primary key autoincrement,
     nombre varchar(45),
     nacimiento date,
     peso float
