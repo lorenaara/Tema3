@@ -52,7 +52,7 @@ if(!enviado() || $correcto==false){
             }
         ?>
         <label for="peso">Peso:</label>
-        <input type="number" name="peso" id="peso" value="<?
+        <input type="number" name="peso" id="peso" step="any" value="<?
             if(enviado() && !vacio('peso')){
                 echo $_REQUEST['peso'];
             }

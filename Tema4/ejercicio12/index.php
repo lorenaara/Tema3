@@ -13,7 +13,6 @@ try{
         echo '<a href="./ejecutarScript.php">Crear base de datos</a>';
     }else if(mysqli_connect_errno()==1045){
         echo 'Comprueba que el usuario o la contraseña sean correctos';
-        //controlar error de contraseña con un else if
     }
 }
 ?>

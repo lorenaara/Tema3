@@ -31,12 +31,15 @@ function insertar($nombre, $nacimiento, $peso)
     mysqli_stmt_bind_param($consulta_preparada, 'ssd', $nombre, $nacimiento, $peso);
     mysqli_stmt_execute($consulta_preparada);
     mysqli_close($conexion);
+    header('Location: ./leer.php');
+    exit;
 
 }
 function validarForm(){
     if(enviado()){
         if(!vacio('nombre') && !vacio('nacimiento') && !vacio('peso')){
             insertar($_REQUEST['nombre'], $_REQUEST['nacimiento'], $_REQUEST['peso']);
+
         }
     }
 }
