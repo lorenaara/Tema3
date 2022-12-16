@@ -15,6 +15,7 @@ try{
         }
         
         echo '<td style="border:1px solid black; padding:10px"><a href="./modificar.php?name='.$row['id'].'">Modificar</a></td>';
+        echo '<td style="border:1px solid black; padding:10px"><a href="./borrar.php?name='.$row['id'].'">Borrar</a></td>';
         echo '</tr>';
     }
     echo '</table>';
