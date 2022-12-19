@@ -8,6 +8,6 @@ require('./seguro/conexion.php');
         echo 'error';
         print_r($ex);
     }finally{
-    unset($conexion); //Se cierra la conexion
+    unset($conexion); 
     }
 ?>

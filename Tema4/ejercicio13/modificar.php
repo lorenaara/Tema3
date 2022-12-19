@@ -21,8 +21,9 @@
             echo 'error';
             print_r($ex);
         }finally{
-        unset($conexion); //Se cierra la conexion
+        unset($conexion); 
     }
+}
 
     try{
         $conexion = new PDO('mysql:host=' . HOST . ';dbname=' . BBDD, USER, PASS);
@@ -55,4 +56,4 @@
     }finally{
     unset($conexion); //Se cierra la conexion
     }
-}   
+ 
