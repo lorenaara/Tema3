@@ -7,7 +7,7 @@ function validaUser($user, $pass){
         $sql_p= $con->prepare($sql);
         $pass_e= sha1($pass);
         $array= array($user,$pass_e);
-        $sql_p->execute();
+        $sql_p->execute($array);
 
         //si devuelve algo haremos un login 
         if($sql_p->rowCount()==1){ //si el resultado es una fila
@@ -16,7 +16,7 @@ function validaUser($user, $pass){
             $row= $sql_p->fetch();
             $_SESSION['user']=$user;
             $_SESSION['nombre']= $row['nombre'];
-            $_SESSION['perfil']=$_SESSION= $row['perfil'];
+            $_SESSION['perfil']= $row['perfil'];
             unset($con);
             return true;
         }
