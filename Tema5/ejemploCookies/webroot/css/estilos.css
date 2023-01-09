@@ -1,0 +1,8 @@
+.producto{
+    position: relative;
+    float:left;
+}
+.visto{
+    position: relative;
+    float: right;
+}
