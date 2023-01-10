@@ -24,9 +24,9 @@ function findById($id){
         $preparada= $con->prepare($sql);
         $devuelve= $preparada->execute(array($id));
         if($devuelve){
+            $producto= $preparada->fetchAll();
             unset($con);
-            $devuelve->fetchAll();
-            
+            return $producto;
         }
         unset($con);
     }catch (Exception $ex) {

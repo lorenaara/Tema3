@@ -6,3 +6,10 @@
     position: relative;
     float: right;
 }
+.card *{
+    margin: 10px;
+}
+.card{
+    display: flex;
+    margin: 50px;
+}
